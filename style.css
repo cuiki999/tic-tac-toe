@@ -97,5 +97,6 @@ table tr td:last-child {
 	#result {
 		margin-top: 0;
 		font-size: 40px;
+		color: red;
 	}
 }
