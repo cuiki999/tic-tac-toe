@@ -8,7 +8,7 @@ table {
 	border-collapse: collapse;	
 }
 
-@media only screen and (max-width: 600px) {
+@media (max-width: 600px) {
 	table {
 		margin: 50px auto;
 	}
@@ -18,7 +18,7 @@ table td {
 	border: 4px solid #272f3d;
 }
 
-@media only screen and (max-width: 600px) {
+@media (max-width: 600px) {
 	table td {
 		border: 3px solid #272f3d;
 	}
@@ -47,7 +47,7 @@ table tr td:last-child {
 	color: #bc3610;
 }
 
-@media only screen and (max-width: 600px) {
+@media (max-width: 600px) {
 	.fa-times {
 		font-size: 56px;
 		margin-left: 15.4px;
@@ -64,7 +64,7 @@ table tr td:last-child {
 	margin-left: 16px;
 }
 
-@media only screen and (max-width: 600px) {
+@media (max-width: 600px) {
 	.circle {
 		height: 28px;
 		width: 28px;
@@ -78,7 +78,7 @@ table tr td:last-child {
 	height: 100px;
 }
 
-@media only screen and (max-width: 600px) {
+@media (max-width: 600px) {
 	.cell {
 		width: 70px;
 		height: 70px;
@@ -93,7 +93,7 @@ table tr td:last-child {
 	color: #fff;
 }
 
-@media only screen and (max-width: 600px) {
+@media (max-width: 600px) {
 	#result {
 		margin-top: 0;
 		font-size: 40px;
