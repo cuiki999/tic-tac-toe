@@ -167,15 +167,17 @@ let playerPlays = () => {
 	tie();
 }
 
-
-let computerPlays = () => {
+// first check if it's a tie, then whether someone is close to winning
+let computerChecks = () => {
 	setTimeout (() => {
 		tie();
 		someoneIsCloseToWinning();		
 	}, 300);
 }
 
-
+// computer randomly selects a cell, if it's taken, the function repeats itself
+// called from someoneIsCloseToWinning, when no other conditions are met
+// this gives a console error in chrome: Uncaught RangeError: Maximum call stack size exceeded, I guess because it can go on indefinitely in theory
 let computerPlaysRandom = () => {
 
 	const random = Math.floor(Math.random() * 9)
@@ -280,7 +282,9 @@ let computerPlaysRandom = () => {
 	}
 }
 
-
+// if the player is one move away from winning, the computer will try to block it
+// if the computer is one move away, it will try to win
+// in certain cases, the computer will prioritize blocking the player over winning, which makes it a bit more dynamic and unpredictable while playing the game
 let someoneIsCloseToWinning = () => {
 	if (includesArray(board, cAlmost1) === true || includesArray(board, pAlmost1) === true) {
 		board[0] = '0x'
@@ -480,7 +484,7 @@ let playerWins = () => {
 			resetGame();
 	}
 	else {
-		computerPlays();
+		computerChecks();
 	}
 };
 
