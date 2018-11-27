@@ -1,5 +1,7 @@
 const nought = '<div id="circle" class="circle"></div>';
 const cross = '<i id="cross" class="fas fa-times"></i>';
+// cell0.innerHTML = nought;
+// cell1.innerHTML = cross;
 
 const cell0 = document.getElementById('cell0');
 const cell1 = document.getElementById('cell1');
@@ -11,9 +13,8 @@ const cell6 = document.getElementById('cell6');
 const cell7 = document.getElementById('cell7');
 const cell8 = document.getElementById('cell8');
 
+// this is a div that displays results
 let result = document.getElementById('result');
-// cell0.innerHTML = nought;
-// cell1.innerHTML = cross;
 
 // this is a constant
 const emptyBoard = ['0e', '1e', '2e',
@@ -24,6 +25,9 @@ const emptyBoard = ['0e', '1e', '2e',
 let board = ['0e', '1e', '2e',
 		  	 '3e', '4e', '5e',
 		  	 '6e', '7e', '8e'];
+
+// this is set to false when the player's moves are deactivated (between games)
+let active = true;
 
 // winning arrays for the computer
 const cVictory1 = ['0x', '1x', '2x'];
@@ -100,83 +104,85 @@ const pAlmost24 = ['2o', '4o', '6e'];
 
 
 let playerPlays = () => {
-
+	
 	cell0.onclick = function() {
-		if (board[0] === '0e') {
+		if (board[0] === '0e' && active) {
 			board[0] = '0o'
 			cell0.innerHTML = nought;
-			playerWins();
+			checkIfPlayerWins();
 		}
 	}
 	cell1.onclick = function() {
-		if (board[1] === '1e') {
+		if (board[1] === '1e' && active) {
 			board[1] = '1o'
 			cell1.innerHTML = nought;
-			playerWins();
+			checkIfPlayerWins();
 		}
 	}
 	cell2.onclick = function() {
-		if (board[2] === '2e') {
+		if (board[2] === '2e' && active) {
 			board[2] = '2o'
 			cell2.innerHTML = nought;
-			playerWins();
+			checkIfPlayerWins();
 		}
 	}
 	cell3.onclick = function() {
-		if (board[3] === '3e') {
+		if (board[3] === '3e' && active) {
 			board[3] = '3o'
 			cell3.innerHTML = nought;
-			playerWins();
+			checkIfPlayerWins();
 		}
 	}
 	cell4.onclick = function() {
-		if (board[4] === '4e') {
+		if (board[4] === '4e' && active) {
 			board[4] = '4o'
 			cell4.innerHTML = nought;
-			playerWins();
+			checkIfPlayerWins();
 		}
 	}
 	cell5.onclick = function() {
-		if (board[5] === '5e') {
+		if (board[5] === '5e' && active) {
 			board[5] = '5o'
 			cell5.innerHTML = nought;
-			playerWins();
+			checkIfPlayerWins();
 		}
 	}
 	cell6.onclick = function() {
-		if (board[6] === '6e') {
+		if (board[6] === '6e' && active) {
 			board[6] = '6o'
 			cell6.innerHTML = nought;
-			playerWins();
+			checkIfPlayerWins();
 		}
 	}
 	cell7.onclick = function() {
-		if (board[7] === '7e') {
+		if (board[7] === '7e' && active) {
 			board[7] = '7o'
 			cell7.innerHTML = nought;
-			playerWins();
+			checkIfPlayerWins();
 		}
 	}
 	cell8.onclick = function() {
-		if (board[8] === '8e') {
+		if (board[8] === '8e' && active) {
 			board[8] = '8o'
 			cell8.innerHTML = nought;
-			playerWins();
+			checkIfPlayerWins();
 		}
 	}
-	tie();
+	checkIfTie();		
 }
 
 // first check if it's a tie, then whether someone is close to winning
+// using setTimeout() so there's a bit of delay before the computer makes its move
 let computerChecks = () => {
+	
 	setTimeout (() => {
-		tie();
+		checkIfTie();
 		someoneIsCloseToWinning();		
 	}, 300);
 }
 
-// computer randomly selects a cell, if it's taken, the function repeats itself
-// called from someoneIsCloseToWinning, when no other conditions are met
+// computer randomly selects a cell, if it's taken, the function repeats itself until it lands on an empty one
+// called from someoneIsCloseToWinning(), when no other conditions are met
 // this gives a console error in chrome: Uncaught RangeError: Maximum call stack size exceeded, I guess because it can go on indefinitely in theory
 let computerPlaysRandom = () => {
 
@@ -186,7 +192,7 @@ let computerPlaysRandom = () => {
 			board[0] = '0x';
 			cell0.innerHTML = cross;
 			playerPlays();
-			computerWins();
+			checkIfComputerWins();
 		}
 		else {
 			computerPlaysRandom();
@@ -197,7 +203,7 @@ let computerPlaysRandom = () => {
 			board[1] = '1x';
 			cell1.innerHTML = cross;
 			playerPlays();
-			computerWins();
+			checkIfComputerWins();
 		}
 		else {
 			computerPlaysRandom();
@@ -208,7 +214,7 @@ let computerPlaysRandom = () => {
 			board[2] = '2x';
 			cell2.innerHTML = cross;
 			playerPlays();
-			computerWins();
+			checkIfComputerWins();
 		}
 		else {
 			computerPlaysRandom();
@@ -219,7 +225,7 @@ let computerPlaysRandom = () => {
 			board[3] = '3x';
 			cell3.innerHTML = cross;
 			playerPlays();
-			computerWins();
+			checkIfComputerWins();
 		}
 		else {
 			computerPlaysRandom();
@@ -230,7 +236,7 @@ let computerPlaysRandom = () => {
 			board[4] = '4x';
 			cell4.innerHTML = cross;
 			playerPlays();
-			computerWins();
+			checkIfComputerWins();
 		}
 		else {
 			computerPlaysRandom();
@@ -241,7 +247,7 @@ let computerPlaysRandom = () => {
 			board[5] = '5x';
 			cell5.innerHTML = cross;
 			playerPlays();
-			computerWins();
+			checkIfComputerWins();
 		}
 		else {
 			computerPlaysRandom();
@@ -252,7 +258,7 @@ let computerPlaysRandom = () => {
 			board[6] = '6x';
 			cell6.innerHTML = cross;
 			playerPlays();
-			computerWins();
+			checkIfComputerWins();
 		}
 		else {
 			computerPlaysRandom();
@@ -263,7 +269,7 @@ let computerPlaysRandom = () => {
 			board[7] = '7x';
 			cell7.innerHTML = cross;
 			playerPlays();
-			computerWins();
+			checkIfComputerWins();
 		}
 		else {
 			computerPlaysRandom();
@@ -274,7 +280,7 @@ let computerPlaysRandom = () => {
 			board[8] = '8x';
 			cell8.innerHTML = cross;
 			playerPlays();
-			computerWins();
+			checkIfComputerWins();
 		}
 		else {
 			computerPlaysRandom();
@@ -286,148 +292,149 @@ let computerPlaysRandom = () => {
 // if the computer is one move away, it will try to win
 // in certain cases, the computer will prioritize blocking the player over winning, which makes it a bit more dynamic and unpredictable while playing the game
 let someoneIsCloseToWinning = () => {
+	
 	if (includesArray(board, cAlmost1) === true || includesArray(board, pAlmost1) === true) {
 		board[0] = '0x'
 		cell0.innerHTML = cross;
-		computerWins();
+		checkIfComputerWins();
 		playerPlays();
 	}
 	else if (includesArray(board, cAlmost2) === true || includesArray(board, pAlmost2) === true) {
 		board[1] = '1x'
 		cell1.innerHTML = cross;
-		computerWins();
+		checkIfComputerWins();
 		playerPlays();
 	} 
 	else if (includesArray(board, cAlmost3) === true || includesArray(board, pAlmost3) === true) {
 		board[2] = '2x'
 		cell2.innerHTML = cross;
-		computerWins();
+		checkIfComputerWins();
 		playerPlays();
 	}
 	else if (includesArray(board, cAlmost4) === true || includesArray(board, pAlmost4) === true) {
 		board[3] = '3x'
 		cell3.innerHTML = cross;
-		computerWins();
+		checkIfComputerWins();
 		playerPlays();
 	}
 	else if (includesArray(board, cAlmost5) === true || includesArray(board, pAlmost5) === true) {
 		board[4] = '4x'
 		cell4.innerHTML = cross;
-		computerWins();
+		checkIfComputerWins();
 		playerPlays();
 	}
 	else if (includesArray(board, cAlmost6) === true || includesArray(board, pAlmost6) === true) {
 		board[5] = '5x'
 		cell5.innerHTML = cross;
-		computerWins();
+		checkIfComputerWins();
 		playerPlays();
 	}
 	else if (includesArray(board, cAlmost7) === true || includesArray(board, pAlmost7) === true) {
 		board[6] = '6x'
 		cell6.innerHTML = cross;
-		computerWins();
+		checkIfComputerWins();
 		playerPlays();
 	}
 	else if (includesArray(board, cAlmost8) === true || includesArray(board, pAlmost8) === true) {
 		board[7] = '7x'
 		cell7.innerHTML = cross;
-		computerWins();
+		checkIfComputerWins();
 		playerPlays();
 	}
 	else if (includesArray(board, cAlmost9) === true || includesArray(board, pAlmost9) === true) {
 		board[8] = '8x'
 		cell8.innerHTML = cross;
-		computerWins();
+		checkIfComputerWins();
 		playerPlays();
 	}
 	else if (includesArray(board, cAlmost10) === true || includesArray(board, pAlmost10) === true) {
 		board[0] = '0x'
 		cell0.innerHTML = cross;
-		computerWins();
+		checkIfComputerWins();
 		playerPlays();
 	}
 	else if (includesArray(board, cAlmost11) === true || includesArray(board, pAlmost11) === true) {
 		board[3] = '3x'
 		cell3.innerHTML = cross;
-		computerWins();
+		checkIfComputerWins();
 		playerPlays();
 	}
 	else if (includesArray(board, cAlmost12) === true || includesArray(board, pAlmost12) === true) {
 		board[6] = '6x'
 		cell6.innerHTML = cross;
-		computerWins();
+		checkIfComputerWins();
 		playerPlays();
 	}
 	else if (includesArray(board, cAlmost13) === true || includesArray(board, pAlmost13) === true) {
 		board[1] = '1x'
 		cell1.innerHTML = cross;
-		computerWins();
+		checkIfComputerWins();
 		playerPlays();
 	}
 	else if (includesArray(board, cAlmost14) === true || includesArray(board, pAlmost14) === true) {
 		board[4] = '4x'
 		cell4.innerHTML = cross;
-		computerWins();
+		checkIfComputerWins();
 		playerPlays();
 	}
 	else if (includesArray(board, cAlmost15) === true || includesArray(board, pAlmost15) === true) {
 		board[7] = '7x'
 		cell7.innerHTML = cross;
-		computerWins();
+		checkIfComputerWins();
 		playerPlays();
 	}
 	else if (includesArray(board, cAlmost16) === true || includesArray(board, pAlmost16) === true) {
 		board[2] = '2x'
 		cell2.innerHTML = cross;
-		computerWins();
+		checkIfComputerWins();
 		playerPlays();
 	}
 	else if (includesArray(board, cAlmost17) === true || includesArray(board, pAlmost17) === true) {
 		board[5] = '5x'
 		cell5.innerHTML = cross;
-		computerWins();
+		checkIfComputerWins();
 		playerPlays();
 	}
 	else if (includesArray(board, cAlmost18) === true || includesArray(board, pAlmost18) === true) {
 		board[8] = '8x'
 		cell8.innerHTML = cross;
-		computerWins();
+		checkIfComputerWins();
 		playerPlays();
 	}
 	else if (includesArray(board, cAlmost19) === true || includesArray(board, pAlmost19) === true) {
 		board[0] = '0x'
 		cell0.innerHTML = cross;
-		computerWins();
+		checkIfComputerWins();
 		playerPlays();
 	}
 	else if (includesArray(board, cAlmost20) === true || includesArray(board, pAlmost20) === true) {
 		board[4] = '4x'
 		cell4.innerHTML = cross;
-		computerWins();
+		checkIfComputerWins();
 		playerPlays();
 	}
 	else if (includesArray(board, cAlmost21) === true || includesArray(board, pAlmost21) === true) {
 		board[8] = '8x'
 		cell8.innerHTML = cross;
-		computerWins();
+		checkIfComputerWins();
 		playerPlays();
 	}
 	else if (includesArray(board, cAlmost22) === true || includesArray(board, pAlmost22) === true) {
 		board[2] = '2x'
 		cell2.innerHTML = cross;
-		computerWins();
+		checkIfComputerWins();
 		playerPlays();
 	}
 	else if (includesArray(board, cAlmost23) === true || includesArray(board, pAlmost23) === true) {
 		board[4] = '4x'
 		cell4.innerHTML = cross;
-		computerWins();
+		checkIfComputerWins();
 		playerPlays();
 	}
 	else if (includesArray(board, cAlmost24) === true || includesArray(board, pAlmost24) === true) {
 		board[6] = '6x'
 		cell6.innerHTML = cross;
-		computerWins();
+		checkIfComputerWins();
 		playerPlays();
 	}
 	else {
@@ -454,8 +461,10 @@ let includesArray = (sup, sub) => {
     return j == sub.length;
 }
 
-
+// inside this function, 'let active' gets set to false so that the player can't click anything while the game is reseting itself
 let resetGame = () => {
+	
+	active = false;
 	setTimeout(() => {
 				
 		board = ['0e', '1e', '2e',
@@ -473,27 +482,32 @@ let resetGame = () => {
 
 		result.innerHTML = '';
 
+		active = true;
 		beginGame();
+		
 	}, 2000)
 }
 
 
-let playerWins = () => {
+let checkIfPlayerWins = () => {
+	
 	if (includesArray(board, pVictory1) === true || includesArray(board, pVictory2) === true || includesArray(board, pVictory3) === true || includesArray(board, pVictory4) === true || includesArray(board, pVictory5) === true || includesArray(board, pVictory6) === true || includesArray(board, pVictory7) === true || includesArray(board, pVictory8) === true) {
-			result.innerHTML = 'You won!'
-			resetGame();
+			
+		result.innerHTML = 'You won!';
+		resetGame();
 	}
 	else {
 		computerChecks();
 	}
-};
+}
 
 
-let computerWins = () => {
+let checkIfComputerWins = () => {
+	
 	if (includesArray(board, cVictory1) === true || includesArray(board, cVictory2) === true || includesArray(board, cVictory3) === true || includesArray(board, cVictory4) === true || includesArray(board, cVictory5) === true || includesArray(board, cVictory6) === true || includesArray(board, cVictory7) === true || includesArray(board, cVictory8) === true) {
 			
-			result.innerHTML = 'You lost.'
-			resetGame();		
+		result.innerHTML = 'You lost.';
+		resetGame();		
 	}
 	else {
 		playerPlays();
@@ -502,13 +516,12 @@ let computerWins = () => {
 }
 
 
-let tie = () => {
+let checkIfTie = () => {
 	
 	if (includesArray(board, cVictory1) === false && includesArray(board, cVictory2) === false && includesArray(board, cVictory3) === false && includesArray(board, cVictory4) === false && includesArray(board, cVictory5) === false && includesArray(board, cVictory6) === false && includesArray(board, cVictory7) === false && includesArray(board, cVictory8) === false && includesArray(board, pVictory1) === false && includesArray(board, pVictory2) === false && includesArray(board, pVictory3) === false && includesArray(board, pVictory4) === false && includesArray(board, pVictory5) === false && includesArray(board, pVictory6) === false && includesArray(board, pVictory7) === false && includesArray(board, pVictory8) === false && (board.some(i => emptyBoard.includes(i)) === false)) {
 		
-			result.innerHTML = 'It\'s a tie.'
-			resetGame();	
-		
+		result.innerHTML = 'It\'s a tie.'
+		resetGame();			
 	}
 }
 
