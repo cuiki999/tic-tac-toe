@@ -1,17 +1,17 @@
 const nought = '<div id="circle" class="circle"></div>';
 const cross = '<i id="cross" class="fas fa-times"></i>';
-// cell0.innerHTML = nought;
-// cell1.innerHTML = cross;
+// square0.innerHTML = nought;
+// square1.innerHTML = cross;
 
-const cell0 = document.getElementById('cell0');
-const cell1 = document.getElementById('cell1');
-const cell2 = document.getElementById('cell2');
-const cell3 = document.getElementById('cell3');
-const cell4 = document.getElementById('cell4');
-const cell5 = document.getElementById('cell5');
-const cell6 = document.getElementById('cell6');
-const cell7 = document.getElementById('cell7');
-const cell8 = document.getElementById('cell8');
+const square0 = document.getElementById('cell0');
+const square1 = document.getElementById('cell1');
+const square2 = document.getElementById('cell2');
+const square3 = document.getElementById('cell3');
+const square4 = document.getElementById('cell4');
+const square5 = document.getElementById('cell5');
+const square6 = document.getElementById('cell6');
+const square7 = document.getElementById('cell7');
+const square8 = document.getElementById('cell8');
 
 // this is a div that displays results
 let result = document.getElementById('result');
@@ -105,66 +105,66 @@ const pAlmost24 = ['2o', '4o', '6e'];
 
 let playerPlays = () => {
 	
-	cell0.onclick = function() {
+	square0.onclick = function() {
 		if (board[0] === '0e' && active) {
 			board[0] = '0o'
-			cell0.innerHTML = nought;
+			square0.innerHTML = nought;
 			checkIfPlayerWins();
 		}
 	}
-	cell1.onclick = function() {
+	square1.onclick = function() {
 		if (board[1] === '1e' && active) {
 			board[1] = '1o'
-			cell1.innerHTML = nought;
+			square1.innerHTML = nought;
 			checkIfPlayerWins();
 		}
 	}
-	cell2.onclick = function() {
+	square2.onclick = function() {
 		if (board[2] === '2e' && active) {
 			board[2] = '2o'
-			cell2.innerHTML = nought;
+			square2.innerHTML = nought;
 			checkIfPlayerWins();
 		}
 	}
-	cell3.onclick = function() {
+	square3.onclick = function() {
 		if (board[3] === '3e' && active) {
 			board[3] = '3o'
-			cell3.innerHTML = nought;
+			square3.innerHTML = nought;
 			checkIfPlayerWins();
 		}
 	}
-	cell4.onclick = function() {
+	square4.onclick = function() {
 		if (board[4] === '4e' && active) {
 			board[4] = '4o'
-			cell4.innerHTML = nought;
+			square4.innerHTML = nought;
 			checkIfPlayerWins();
 		}
 	}
-	cell5.onclick = function() {
+	square5.onclick = function() {
 		if (board[5] === '5e' && active) {
 			board[5] = '5o'
-			cell5.innerHTML = nought;
+			square5.innerHTML = nought;
 			checkIfPlayerWins();
 		}
 	}
-	cell6.onclick = function() {
+	square6.onclick = function() {
 		if (board[6] === '6e' && active) {
 			board[6] = '6o'
-			cell6.innerHTML = nought;
+			square6.innerHTML = nought;
 			checkIfPlayerWins();
 		}
 	}
-	cell7.onclick = function() {
+	square7.onclick = function() {
 		if (board[7] === '7e' && active) {
 			board[7] = '7o'
-			cell7.innerHTML = nought;
+			square7.innerHTML = nought;
 			checkIfPlayerWins();
 		}
 	}
-	cell8.onclick = function() {
+	square8.onclick = function() {
 		if (board[8] === '8e' && active) {
 			board[8] = '8o'
-			cell8.innerHTML = nought;
+			square8.innerHTML = nought;
 			checkIfPlayerWins();
 		}
 	}
@@ -181,7 +181,7 @@ let computerChecks = () => {
 	}, 300);
 }
 
-// computer randomly selects a cell, if it's taken, the function repeats itself until it lands on an empty one
+// computer randomly selects a square, if it's taken, the function repeats itself until it lands on an empty one
 // called from someoneIsCloseToWinning(), when no other conditions are met
 // this gives a console error in chrome: Uncaught RangeError: Maximum call stack size exceeded, I guess because it can go on indefinitely in theory
 let computerPlaysRandom = () => {
@@ -190,7 +190,7 @@ let computerPlaysRandom = () => {
 	if (random === 0) {
 		if (board[0] === '0e') {
 			board[0] = '0x';
-			cell0.innerHTML = cross;
+			square0.innerHTML = cross;
 			playerPlays();
 			checkIfComputerWins();
 		}
@@ -201,7 +201,7 @@ let computerPlaysRandom = () => {
 	else if (random === 1) {
 		if (board[1] === '1e') {
 			board[1] = '1x';
-			cell1.innerHTML = cross;
+			square1.innerHTML = cross;
 			playerPlays();
 			checkIfComputerWins();
 		}
@@ -212,7 +212,7 @@ let computerPlaysRandom = () => {
 	else if (random === 2) {
 		if (board[2] === '2e') {
 			board[2] = '2x';
-			cell2.innerHTML = cross;
+			square2.innerHTML = cross;
 			playerPlays();
 			checkIfComputerWins();
 		}
@@ -223,7 +223,7 @@ let computerPlaysRandom = () => {
 	else if (random === 3) {
 		if (board[3] === '3e') {
 			board[3] = '3x';
-			cell3.innerHTML = cross;
+			square3.innerHTML = cross;
 			playerPlays();
 			checkIfComputerWins();
 		}
@@ -234,7 +234,7 @@ let computerPlaysRandom = () => {
 	else if (random === 4) {
 		if (board[4] === '4e') {
 			board[4] = '4x';
-			cell4.innerHTML = cross;
+			square4.innerHTML = cross;
 			playerPlays();
 			checkIfComputerWins();
 		}
@@ -245,7 +245,7 @@ let computerPlaysRandom = () => {
 	else if (random === 5) {
 		if (board[5] === '5e') {
 			board[5] = '5x';
-			cell5.innerHTML = cross;
+			square5.innerHTML = cross;
 			playerPlays();
 			checkIfComputerWins();
 		}
@@ -256,7 +256,7 @@ let computerPlaysRandom = () => {
 	else if (random === 6) {
 		if (board[6] === '6e') {
 			board[6] = '6x';
-			cell6.innerHTML = cross;
+			square6.innerHTML = cross;
 			playerPlays();
 			checkIfComputerWins();
 		}
@@ -267,7 +267,7 @@ let computerPlaysRandom = () => {
 	else if (random === 7) {
 		if (board[7] === '7e') {
 			board[7] = '7x';
-			cell7.innerHTML = cross;
+			square7.innerHTML = cross;
 			playerPlays();
 			checkIfComputerWins();
 		}
@@ -278,7 +278,7 @@ let computerPlaysRandom = () => {
 	else if (random === 8) {
 		if (board[8] === '8e') {
 			board[8] = '8x';
-			cell8.innerHTML = cross;
+			square8.innerHTML = cross;
 			playerPlays();
 			checkIfComputerWins();
 		}
@@ -290,150 +290,150 @@ let computerPlaysRandom = () => {
 
 // if the player is one move away from winning, the computer will try to block it
 // if the computer is one move away, it will try to win
-// in certain cases, the computer will prioritize blocking the player over winning, which makes it a bit more dynamic and unpredictable while playing the game
+// in certain cases, the computer will prioritize blocking the player over winning. I left that in on purpose.
 let someoneIsCloseToWinning = () => {
 	
 	if (includesArray(board, cAlmost1) === true || includesArray(board, pAlmost1) === true) {
 		board[0] = '0x'
-		cell0.innerHTML = cross;
+		square0.innerHTML = cross;
 		checkIfComputerWins();
 		playerPlays();
 	}
 	else if (includesArray(board, cAlmost2) === true || includesArray(board, pAlmost2) === true) {
 		board[1] = '1x'
-		cell1.innerHTML = cross;
+		square1.innerHTML = cross;
 		checkIfComputerWins();
 		playerPlays();
 	} 
 	else if (includesArray(board, cAlmost3) === true || includesArray(board, pAlmost3) === true) {
 		board[2] = '2x'
-		cell2.innerHTML = cross;
+		square2.innerHTML = cross;
 		checkIfComputerWins();
 		playerPlays();
 	}
 	else if (includesArray(board, cAlmost4) === true || includesArray(board, pAlmost4) === true) {
 		board[3] = '3x'
-		cell3.innerHTML = cross;
+		square3.innerHTML = cross;
 		checkIfComputerWins();
 		playerPlays();
 	}
 	else if (includesArray(board, cAlmost5) === true || includesArray(board, pAlmost5) === true) {
 		board[4] = '4x'
-		cell4.innerHTML = cross;
+		square4.innerHTML = cross;
 		checkIfComputerWins();
 		playerPlays();
 	}
 	else if (includesArray(board, cAlmost6) === true || includesArray(board, pAlmost6) === true) {
 		board[5] = '5x'
-		cell5.innerHTML = cross;
+		square5.innerHTML = cross;
 		checkIfComputerWins();
 		playerPlays();
 	}
 	else if (includesArray(board, cAlmost7) === true || includesArray(board, pAlmost7) === true) {
 		board[6] = '6x'
-		cell6.innerHTML = cross;
+		square6.innerHTML = cross;
 		checkIfComputerWins();
 		playerPlays();
 	}
 	else if (includesArray(board, cAlmost8) === true || includesArray(board, pAlmost8) === true) {
 		board[7] = '7x'
-		cell7.innerHTML = cross;
+		square7.innerHTML = cross;
 		checkIfComputerWins();
 		playerPlays();
 	}
 	else if (includesArray(board, cAlmost9) === true || includesArray(board, pAlmost9) === true) {
 		board[8] = '8x'
-		cell8.innerHTML = cross;
+		square8.innerHTML = cross;
 		checkIfComputerWins();
 		playerPlays();
 	}
 	else if (includesArray(board, cAlmost10) === true || includesArray(board, pAlmost10) === true) {
 		board[0] = '0x'
-		cell0.innerHTML = cross;
+		square0.innerHTML = cross;
 		checkIfComputerWins();
 		playerPlays();
 	}
 	else if (includesArray(board, cAlmost11) === true || includesArray(board, pAlmost11) === true) {
 		board[3] = '3x'
-		cell3.innerHTML = cross;
+		square3.innerHTML = cross;
 		checkIfComputerWins();
 		playerPlays();
 	}
 	else if (includesArray(board, cAlmost12) === true || includesArray(board, pAlmost12) === true) {
 		board[6] = '6x'
-		cell6.innerHTML = cross;
+		square6.innerHTML = cross;
 		checkIfComputerWins();
 		playerPlays();
 	}
 	else if (includesArray(board, cAlmost13) === true || includesArray(board, pAlmost13) === true) {
 		board[1] = '1x'
-		cell1.innerHTML = cross;
+		square1.innerHTML = cross;
 		checkIfComputerWins();
 		playerPlays();
 	}
 	else if (includesArray(board, cAlmost14) === true || includesArray(board, pAlmost14) === true) {
 		board[4] = '4x'
-		cell4.innerHTML = cross;
+		square4.innerHTML = cross;
 		checkIfComputerWins();
 		playerPlays();
 	}
 	else if (includesArray(board, cAlmost15) === true || includesArray(board, pAlmost15) === true) {
 		board[7] = '7x'
-		cell7.innerHTML = cross;
+		square7.innerHTML = cross;
 		checkIfComputerWins();
 		playerPlays();
 	}
 	else if (includesArray(board, cAlmost16) === true || includesArray(board, pAlmost16) === true) {
 		board[2] = '2x'
-		cell2.innerHTML = cross;
+		square2.innerHTML = cross;
 		checkIfComputerWins();
 		playerPlays();
 	}
 	else if (includesArray(board, cAlmost17) === true || includesArray(board, pAlmost17) === true) {
 		board[5] = '5x'
-		cell5.innerHTML = cross;
+		square5.innerHTML = cross;
 		checkIfComputerWins();
 		playerPlays();
 	}
 	else if (includesArray(board, cAlmost18) === true || includesArray(board, pAlmost18) === true) {
 		board[8] = '8x'
-		cell8.innerHTML = cross;
+		square8.innerHTML = cross;
 		checkIfComputerWins();
 		playerPlays();
 	}
 	else if (includesArray(board, cAlmost19) === true || includesArray(board, pAlmost19) === true) {
 		board[0] = '0x'
-		cell0.innerHTML = cross;
+		square0.innerHTML = cross;
 		checkIfComputerWins();
 		playerPlays();
 	}
 	else if (includesArray(board, cAlmost20) === true || includesArray(board, pAlmost20) === true) {
 		board[4] = '4x'
-		cell4.innerHTML = cross;
+		square4.innerHTML = cross;
 		checkIfComputerWins();
 		playerPlays();
 	}
 	else if (includesArray(board, cAlmost21) === true || includesArray(board, pAlmost21) === true) {
 		board[8] = '8x'
-		cell8.innerHTML = cross;
+		square8.innerHTML = cross;
 		checkIfComputerWins();
 		playerPlays();
 	}
 	else if (includesArray(board, cAlmost22) === true || includesArray(board, pAlmost22) === true) {
 		board[2] = '2x'
-		cell2.innerHTML = cross;
+		square2.innerHTML = cross;
 		checkIfComputerWins();
 		playerPlays();
 	}
 	else if (includesArray(board, cAlmost23) === true || includesArray(board, pAlmost23) === true) {
 		board[4] = '4x'
-		cell4.innerHTML = cross;
+		square4.innerHTML = cross;
 		checkIfComputerWins();
 		playerPlays();
 	}
 	else if (includesArray(board, cAlmost24) === true || includesArray(board, pAlmost24) === true) {
 		board[6] = '6x'
-		cell6.innerHTML = cross;
+		square6.innerHTML = cross;
 		checkIfComputerWins();
 		playerPlays();
 	}
@@ -470,15 +470,15 @@ let resetGame = () => {
 		board = ['0e', '1e', '2e',
 	  	 	 	 '3e', '4e', '5e',
 	  	 	 	 '6e', '7e', '8e'];
-		cell0.innerHTML = '';
-		cell1.innerHTML = '';
-		cell2.innerHTML = '';
-		cell3.innerHTML = '';
-		cell4.innerHTML = '';
-		cell5.innerHTML = '';
-		cell6.innerHTML = '';
-		cell7.innerHTML = '';
-		cell8.innerHTML = '';
+		square0.innerHTML = '';
+		square1.innerHTML = '';
+		square2.innerHTML = '';
+		square3.innerHTML = '';
+		square4.innerHTML = '';
+		square5.innerHTML = '';
+		square6.innerHTML = '';
+		square7.innerHTML = '';
+		square8.innerHTML = '';
 
 		result.innerHTML = '';
 
