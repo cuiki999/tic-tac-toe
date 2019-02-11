@@ -1,0 +1,24 @@
+{
+  "name": "tic-tac-toe",
+  "version": "1.0.0",
+  "description": "A simple game of tic tac toe",
+  "main": "main_new.js",
+  "scripts": {
+    "build": "babel src -d lib --presets=@babel/preset-env"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cuiki999/tic-tac-toe.git"
+  },
+  "author": "Lea Opacic",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cuiki999/tic-tac-toe/issues"
+  },
+  "homepage": "https://github.com/cuiki999/tic-tac-toe#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1"
+  }
+}
